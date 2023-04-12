@@ -1,6 +1,9 @@
 package com.example.proyectofinal;
 // A Java program for a Client
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.VBox;
 
 import java.io.*;
 import java.net.*;
@@ -12,6 +15,11 @@ public class Client extends Thread {
     private static BufferedReader in;
 
     public static Client Instance;
+
+    public static int key;
+    public static int publicKey;
+
+
     public String response;
     // constructor to put ip address and port
     public static void StartClient(String address, int port)
@@ -52,6 +60,15 @@ public class Client extends Thread {
                         System.out.println("Just received a message!");
                         FileManager.CreateFile(Usuario.selectecUser);
                         FileManager.AddMessage(Usuario.selectecUser, clientMsgDecoded[1], false);
+
+
+                        ChatController temp = Usuario.loader.getController();
+
+                        Platform.runLater(() -> {
+                            temp.messages.getChildren().clear();
+                            FileManager.ReadChat(Usuario.selectecUser, temp.messages);
+                        });
+
                         break;
                     default:
                         System.out.println("Unknown command");

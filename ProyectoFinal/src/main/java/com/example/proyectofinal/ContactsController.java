@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,7 +32,8 @@ public class ContactsController {
                 Parent root = null;
                 Usuario.selectecUser = ((Button)e.getSource()).getText();
                 try {
-                    root = FXMLLoader.load(getClass().getResource("chat-view.fxml"));
+                    Usuario.loader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
+                    root = Usuario.loader.load();
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

@@ -1,5 +1,7 @@
 package com.example.proyectofinal;
 
+import javafx.fxml.FXMLLoader;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
@@ -9,6 +11,8 @@ public class Usuario {
     public static String selectecUser;
     public static String name;
     public static List<Message> m_pendingMessages;
+
+    public static FXMLLoader loader;
     public static void SetUsuario(String usuarios)
     {
         String [] datos = usuarios.split(",");
