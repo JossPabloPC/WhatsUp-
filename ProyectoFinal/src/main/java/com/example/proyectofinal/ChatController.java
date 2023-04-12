@@ -16,7 +16,9 @@ public class ChatController {
     @FXML
     private TextField Key;
     @FXML
-    private VBox messages;
+    private TextField PublicKey;
+    @FXML
+    public VBox messages;
     @FXML
     private TextField message;
     @FXML
@@ -27,6 +29,10 @@ public class ChatController {
     private Button criptAsym;
     @FXML
     private Button criptSym;
+    @FXML
+    private Button criptEfirma;
+    @FXML
+    private Button criptSobre;
     @FXML
     protected void OnSendMessage(){
 
@@ -42,7 +48,7 @@ public class ChatController {
     }
 
     @FXML
-    protected void OnLoadChat(){
+    public void OnLoadChat(){
         messages.getChildren().clear();
         FileManager.ReadChat(Usuario.selectecUser, messages);
     }
@@ -54,9 +60,36 @@ public class ChatController {
     protected void OnEncryptAsym(){
         message.setText(Encrypter.encryptAsym(message.getText(), Integer.parseInt(Key.getText())));
     }
+
+    @FXML
+    protected void OnEncryptEfFirma(){
+        message.setText(Encrypter.encryptEFirma(message.getText(), Integer.parseInt(Key.getText())));
+    }
+
+    @FXML
+    protected void OnEncryptSobre(){
+        message.setText(Encrypter.encryptSobre(message.getText(), Integer.parseInt(Key.getText()), Integer.parseInt(PublicKey.getText())));
+    }
     @FXML
     protected void OnDencryptMessage(){
         Label lastMsg = ((Label)messages.getChildren().get(messages.getChildren().size()-1));
         lastMsg.setText(Encrypter.decrypt(lastMsg.getText(), Integer.parseInt(Key.getText())));
+    }
+    public void OnChangeKey(){
+        try{
+            Client.key = Integer.parseInt(Key.getText());
+
+        }catch (NumberFormatException e){
+            Client.key = 0;
+        }
+    }
+
+    public void OnChangePublicKey(){
+        try{
+            Client.publicKey = Integer.parseInt(PublicKey.getText());
+
+        }catch (NumberFormatException e){
+            Client.publicKey = 0;
+        }
     }
 }
