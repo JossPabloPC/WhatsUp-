@@ -14,9 +14,9 @@ public class ChatController {
     @FXML
     private Label lastmessage;
     @FXML
-    private TextField Key;
+    private Label Key;
     @FXML
-    private TextField PublicKey;
+    public Label PublicKey;
     @FXML
     public VBox messages;
     @FXML
@@ -37,6 +37,7 @@ public class ChatController {
     protected void OnSendMessage(){
 
         if(!message.getText().equals("")) {
+            System.out.println("test");
             Client.SendMessageToServer("SendMessage" + "," + Usuario.selectecUser + "," + message.getText()+ "," + Usuario.name);
             System.out.println(Client.Instance.response);
             lastmessage = new Label("Yo:" + message.getText());
@@ -51,6 +52,7 @@ public class ChatController {
     public void OnLoadChat(){
         messages.getChildren().clear();
         FileManager.ReadChat(Usuario.selectecUser, messages);
+        Key.setText(String.valueOf(Client.key));
     }
     @FXML
     protected void OnEncryptMessage(){
@@ -63,12 +65,12 @@ public class ChatController {
 
     @FXML
     protected void OnEncryptEfFirma(){
-        message.setText(Encrypter.encryptEFirma(message.getText(), Integer.parseInt(Key.getText())));
+        message.setText(Encrypter.encryptEFirma(message.getText(), Client.key));
     }
 
     @FXML
     protected void OnEncryptSobre(){
-        message.setText(Encrypter.encryptSobre(message.getText(), Integer.parseInt(Key.getText()), Integer.parseInt(PublicKey.getText())));
+        message.setText(Encrypter.encryptSobre(message.getText(), Client.key ,Client.friendPublicKey));
     }
     @FXML
     protected void OnDencryptMessage(){

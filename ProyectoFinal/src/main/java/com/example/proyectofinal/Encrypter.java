@@ -1,4 +1,5 @@
 package com.example.proyectofinal;
+import java.io.Console;
 import java.io.PrintStream;
 import java.util.Random;
 
@@ -34,6 +35,7 @@ public class Encrypter
         return output;
     }
     public static String encryptEFirma(String input, int key){
+        System.out.println("Key used:" + key);
         String hash     = Sha.Digest(input);
         int[] messageNumber = convertStringToIndexArray(hash);
         for (int i = 0; i < hash.length(); i++) {

@@ -31,6 +31,7 @@ public class ContactsController {
             {
                 Parent root = null;
                 Usuario.selectecUser = ((Button)e.getSource()).getText();
+                Client.SendMessageToServer("AskKey," + Usuario.selectecUser + ",0,"+ Usuario.name);
                 try {
                     Usuario.loader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
                     root = Usuario.loader.load();
@@ -49,6 +50,7 @@ public class ContactsController {
             contacts[i] = new Button("Contact " + i);
             toolBar.getItems().add(contacts[i]);
             contacts[i].setText (Usuario.contacts.get(i));
+            contacts[i].setId(String.valueOf(i));
             contacts[i].setOnAction(event);
         }
 

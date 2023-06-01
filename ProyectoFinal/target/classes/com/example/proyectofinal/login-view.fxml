@@ -6,8 +6,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="241.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectofinal.LoginController">
    <children>
-      <TextField fx:id="userTxt" layoutX="47.0" layoutY="76.0" promptText="user" />
-      <TextField fx:id="passwordTxt" layoutX="47.0" layoutY="128.0" promptText="password" />
-      <Button fx:id="enterBtn" layoutX="47.0" layoutY="215.0" mnemonicParsing="false" onAction="#OnEnterClicked" prefHeight="25.0" prefWidth="149.0" text="Enter" />
+      <TextField fx:id="userTxt" layoutX="47.0" layoutY="76.0" prefHeight="25.0" prefWidth="110.0" promptText="PATH" />
+      <TextField fx:id="passwordTxt" layoutX="47.0" layoutY="160.0" prefHeight="25.0" prefWidth="110.0" promptText="Password" />
+      <Button fx:id="enterBtn" layoutX="46.0" layoutY="257.0" mnemonicParsing="false" onAction="#OnEnterClicked" prefHeight="25.0" prefWidth="149.0" text="Enter" />
+      <Button fx:id="kyBtn" layoutX="160.0" layoutY="76.0" mnemonicParsing="false" onAction="#OnSearchKey" text="KEY" />
+      <Button fx:id="crBtn" layoutX="159.0" layoutY="128.0" mnemonicParsing="false" onAction="#OnSearchCer" text="CER" />
+      <TextField fx:id="CerPath" layoutX="47.0" layoutY="128.0" prefHeight="25.0" prefWidth="110.0" promptText="PATH" />
    </children>
 </AnchorPane>

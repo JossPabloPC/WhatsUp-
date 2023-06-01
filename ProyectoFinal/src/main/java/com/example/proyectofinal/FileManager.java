@@ -65,7 +65,7 @@ public class FileManager {
                 });
 
                 button4.setOnAction(event -> {
-                    text.setText(Encrypter.DecryptSobre(text.getText(), Client.key, Client.publicKey));
+                    text.setText(Encrypter.DecryptSobre(text.getText(), Client.key, Client.friendPublicKey));
                 });
 
                 hbox.getChildren().addAll(button1, button3, button4);
@@ -78,5 +78,21 @@ public class FileManager {
             System.out.println("no conversation yet.");
             e.printStackTrace();
         }
+    }
+
+    public static String getNLineFrom(int n, File file){
+        String res ="";
+        try {
+            Scanner myReader = new Scanner(file);
+            for(int i = 0; i < n; i++) {
+                res = myReader.nextLine();
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("No file.");
+            e.printStackTrace();
+        }
+
+        return res;
     }
 }

@@ -18,7 +18,7 @@ public class UserApplication extends Application {
         stage.show();
 
         //Server
-        Client.Instance.StartClient("192.168.0.6", 50000);
+        Client.Instance.StartClient("192.168.0.14", 50000);
         Usuario.SetUsuario("Juan,Gerardo,Mariana,Pablo");
     }
 

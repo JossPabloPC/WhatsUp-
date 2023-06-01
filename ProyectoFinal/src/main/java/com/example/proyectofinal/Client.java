@@ -17,7 +17,10 @@ public class Client extends Thread {
     public static Client Instance;
 
     public static int key;
+
+
     public static int publicKey;
+    public static int friendPublicKey;
 
 
     public String response;
@@ -69,6 +72,13 @@ public class Client extends Thread {
                             FileManager.ReadChat(Usuario.selectecUser, temp.messages);
                         });
 
+                        break;
+                    case "GiveKey":
+                        Client.friendPublicKey = Integer.parseInt(clientMsgDecoded[1]);
+                        ChatController temp2 = Usuario.loader.getController();
+                        Platform.runLater(()->{
+                            temp2.PublicKey.setText(String.valueOf(Client.friendPublicKey));
+                        });
                         break;
                     default:
                         System.out.println("Unknown command");
